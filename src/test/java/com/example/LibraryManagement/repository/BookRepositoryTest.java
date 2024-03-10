@@ -48,8 +48,8 @@ public class BookRepositoryTest {
         int validId = 1;
         Book expectedBook = new Book();
         when(restTemplate.getForObject(anyString(), eq(Book.class))).thenReturn(expectedBook);
-        BookRepository mockRepository = Mockito.mock(BookRepository.class);
-        Mockito.when(mockRepository.getBookDetailsRepository(Mockito.anyInt())).thenReturn(expectedBook);
+        //BookRepository mockRepository = Mockito.mock(BookRepository.class);
+        //Mockito.when(mockRepository.getBookDetailsRepository(Mockito.anyInt())).thenReturn(expectedBook);
         Book actualBook = bookRepository.getBookDetailsRepository(validId);
         assertEquals(expectedBook, actualBook);
     }
@@ -58,8 +58,8 @@ public class BookRepositoryTest {
     {
         int BookId = 999;
         when(restTemplate.getForObject(anyString(), eq(Book.class))).thenReturn(null);
-        BookRepository mockRepository = Mockito.mock(BookRepository.class);
-        Mockito.when(mockRepository.getBookDetailsRepository(Mockito.anyInt())).thenReturn(null);
+        //BookRepository mockRepository = Mockito.mock(BookRepository.class);
+        //Mockito.when(mockRepository.getBookDetailsRepository(Mockito.anyInt())).thenReturn(null);
         Book actualBook = bookRepository.getBookDetailsRepository(BookId);
         assertNull(actualBook);
     }
