@@ -35,6 +35,8 @@ public class BookControllerTest {
         bookToAdd.setDescription("Torry Harries Integration Solution");
         bookToAdd.setRating(5.0);
         Mockito.when(bookService.addBook(bookToAdd)).thenReturn(bookToAdd);
+        BookController mockController = Mockito.mock(BookController.class);
+        Mockito.when(mockController.addBook(Mockito.any(Book.class))).thenReturn(bookToAdd);
         Book addedbook = bookController.addBook(bookToAdd);
         assertEquals(bookToAdd,addedbook);
     }
@@ -50,6 +52,8 @@ public class BookControllerTest {
         expectedBook.setDescription("Torry Harries Integration Solution");
         expectedBook.setRating(5.0);
         Mockito.when(bookService.getBookDetailsService(1)).thenReturn(expectedBook);
+        BookController mockController = Mockito.mock(BookController.class);
+        Mockito.when(mockController.getBookDetailsController(Mockito.anyInt())).thenReturn(expectedBook);
         Book actualBook = bookController.getBookDetailsController(1);
         assertEquals(expectedBook,actualBook);
     }
@@ -59,6 +63,8 @@ public class BookControllerTest {
     {
         int bookid = 3;
         Mockito.when(bookService.getBookDetailsService(bookid)).thenReturn(null);
+        BookController mockController = Mockito.mock(BookController.class);
+        Mockito.when(mockController.getBookDetailsController(Mockito.anyInt())).thenReturn(null);
         Book actualBook = bookController.getBookDetailsController(bookid);
         assertNull(actualBook);
     }
